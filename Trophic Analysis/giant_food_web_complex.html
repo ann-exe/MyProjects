@@ -1,0 +1,453 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 600px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#F31C26", "id": "Araneus quadratus", "label": "Araneus quadratus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Aphis fabae", "label": "Aphis fabae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Stenocranus major", "label": "Stenocranus major", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Metellina segmentata", "label": "Metellina segmentata", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Aphidini", "label": "Aphidini", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Tetragnatha extensa", "label": "Tetragnatha extensa", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Trichoptera", "label": "Trichoptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Heteroptera", "label": "Heteroptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Dysaphis", "label": "Dysaphis", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Formicidae", "label": "Formicidae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Chrysopidae", "label": "Chrysopidae", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Argiope bruennichi", "label": "Argiope bruennichi", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Araneae", "label": "Araneae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Lepidoptera", "label": "Lepidoptera", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Araneus diadematus", "label": "Araneus diadematus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Hymenoptera", "label": "Hymenoptera", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Larinioides cornutus", "label": "Larinioides cornutus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Cicadoidea", "label": "Cicadoidea", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Apidae", "label": "Apidae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Ephemeroptera", "label": "Ephemeroptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sitobion avenae", "label": "Sitobion avenae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Diptera", "label": "Diptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Lepyronia coleoptrata", "label": "Lepyronia coleoptrata", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Myzus persicae", "label": "Myzus persicae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Anoecia corni", "label": "Anoecia corni", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Dicranotropis hamata", "label": "Dicranotropis hamata", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Thysanoptera", "label": "Thysanoptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Empoasca", "label": "Empoasca", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Hyalopterus pruni", "label": "Hyalopterus pruni", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Coleoptera", "label": "Coleoptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Kelisia punctulum", "label": "Kelisia punctulum", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Hemiptera", "label": "Hemiptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Rhopalosiphum padi", "label": "Rhopalosiphum padi", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Panorpidae", "label": "Panorpidae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Cicadula quadrinotata", "label": "Cicadula quadrinotata", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Aphis", "label": "Aphis", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Evacanthus interruptus", "label": "Evacanthus interruptus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Erzaleus metrius", "label": "Erzaleus metrius", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Cicadella viridis", "label": "Cicadella viridis", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Typhlocybinae", "label": "Typhlocybinae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Javesella pellucida", "label": "Javesella pellucida", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Orthoptera", "label": "Orthoptera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sitobion", "label": "Sitobion", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Aphrodes bicincta", "label": "Aphrodes bicincta", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sylvia atricapilla", "label": "Sylvia atricapilla", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Pistacia terebinthus", "label": "Pistacia terebinthus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Phillyrea latifolia", "label": "Phillyrea latifolia", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Phillyrea angustifolia", "label": "Phillyrea angustifolia", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Juniperus oxycedrus", "label": "Juniperus oxycedrus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Celtis australis", "label": "Celtis australis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ligustrum japonicum", "label": "Ligustrum japonicum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Olea europaea", "label": "Olea europaea", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Myrtus communis", "label": "Myrtus communis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Vitis vinifera", "label": "Vitis vinifera", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rhamnus lycioides", "label": "Rhamnus lycioides", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Osyris quadripartita", "label": "Osyris quadripartita", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Lonicera implexa", "label": "Lonicera implexa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Daphne gnidium", "label": "Daphne gnidium", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rubus ulmifolius", "label": "Rubus ulmifolius", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Pistacia lentiscus", "label": "Pistacia lentiscus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Iris foetidissima", "label": "Iris foetidissima", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Arbutus unedo", "label": "Arbutus unedo", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rubia peregrina", "label": "Rubia peregrina", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Solanum nigrum", "label": "Solanum nigrum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Asparagus", "label": "Asparagus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Lonicera periclymenum", "label": "Lonicera periclymenum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cydonia oblonga", "label": "Cydonia oblonga", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Osyris alba", "label": "Osyris alba", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Dioscorea communis", "label": "Dioscorea communis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Viburnum tinus", "label": "Viburnum tinus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ficus carica", "label": "Ficus carica", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Smilax aspera", "label": "Smilax aspera", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rosa", "label": "Rosa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Solanum dulcamara", "label": "Solanum dulcamara", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Sylvia borin", "label": "Sylvia borin", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Hippophae", "label": "Hippophae", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Curruca curruca", "label": "Curruca curruca", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Ribes nigrum", "label": "Ribes nigrum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rubus", "label": "Rubus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Sambucus nigra", "label": "Sambucus nigra", "shape": "dot", "title": "Plant"}, {"color": "#F31C26", "id": "Pica pica", "label": "Pica pica", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Passeriformes", "label": "Passeriformes", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Isopoda", "label": "Isopoda", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Diplopoda", "label": "Diplopoda", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Annelida", "label": "Annelida", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Rodentia", "label": "Rodentia", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Araneidae", "label": "Araneidae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Capreolus capreolus", "label": "Capreolus capreolus", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Fraxinus excelsior", "label": "Fraxinus excelsior", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Betula pendula", "label": "Betula pendula", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Pinus sylvestris", "label": "Pinus sylvestris", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Capreolus capreolus italicus", "label": "Capreolus capreolus italicus", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Cynodon dactylon", "label": "Cynodon dactylon", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Potentilla reptans", "label": "Potentilla reptans", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Acer campestre", "label": "Acer campestre", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Quercus pyrenaica", "label": "Quercus pyrenaica", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Euonymus europaeus", "label": "Euonymus europaeus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Crataegus monogyna", "label": "Crataegus monogyna", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Vicia sativa", "label": "Vicia sativa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cistus salviifolius", "label": "Cistus salviifolius", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cytisus hirsutus", "label": "Cytisus hirsutus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Hedera maderensis", "label": "Hedera maderensis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Carex flacca", "label": "Carex flacca", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Asparagus acutifolius", "label": "Asparagus acutifolius", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Plantago coronopus", "label": "Plantago coronopus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Verbascum sinuatum", "label": "Verbascum sinuatum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Euonymus atropurpureus", "label": "Euonymus atropurpureus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Verbascum blattaria", "label": "Verbascum blattaria", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ficaria verna verna", "label": "Ficaria verna verna", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Acer monspessulanum", "label": "Acer monspessulanum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Aremonia agrimonoides", "label": "Aremonia agrimonoides", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rhamnus alaternus", "label": "Rhamnus alaternus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Taraxacum officinale", "label": "Taraxacum officinale", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Dactylis glomerata", "label": "Dactylis glomerata", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Juncus acutus", "label": "Juncus acutus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Prunus americana", "label": "Prunus americana", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cytisus scoparius", "label": "Cytisus scoparius", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Carpinus betulus", "label": "Carpinus betulus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Symphytum bulbosum", "label": "Symphytum bulbosum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cistus monspeliensis", "label": "Cistus monspeliensis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Erica arborea", "label": "Erica arborea", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Quercus pubescens pubescens", "label": "Quercus pubescens pubescens", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Pyrus communis", "label": "Pyrus communis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ranunculus repens", "label": "Ranunculus repens", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rosa canina", "label": "Rosa canina", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Corylus avellana", "label": "Corylus avellana", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rumex bucephalophorus", "label": "Rumex bucephalophorus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Verbascum thapsus", "label": "Verbascum thapsus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Carex distachya", "label": "Carex distachya", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rubus canescens", "label": "Rubus canescens", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ruscus aculeatus", "label": "Ruscus aculeatus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Galium mollugo", "label": "Galium mollugo", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ranunculus bulbosus", "label": "Ranunculus bulbosus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Pyrus spinosa", "label": "Pyrus spinosa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Cormus domestica", "label": "Cormus domestica", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rumex conglomeratus", "label": "Rumex conglomeratus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Syringa vulgaris", "label": "Syringa vulgaris", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Quercus helferiana", "label": "Quercus helferiana", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Fraxinus angustifolia", "label": "Fraxinus angustifolia", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Torminalis glaberrima", "label": "Torminalis glaberrima", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Trifolium repens", "label": "Trifolium repens", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Spartium junceum", "label": "Spartium junceum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rumex longifolius", "label": "Rumex longifolius", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Galium verum", "label": "Galium verum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Prunus cocomilia", "label": "Prunus cocomilia", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Plantago serraria", "label": "Plantago serraria", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Plantago lanceolata", "label": "Plantago lanceolata", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rosa sempervirens", "label": "Rosa sempervirens", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Lonicera etrusca", "label": "Lonicera etrusca", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Briza maxima", "label": "Briza maxima", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Trifolium aureum", "label": "Trifolium aureum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Alnus glutinosa", "label": "Alnus glutinosa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Quercus suber", "label": "Quercus suber", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Bromus inermis", "label": "Bromus inermis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ulmus minor", "label": "Ulmus minor", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rumex sanguineus", "label": "Rumex sanguineus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Trifolium pratense", "label": "Trifolium pratense", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Asphodelus ramosus", "label": "Asphodelus ramosus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Brachypodium sylvaticum", "label": "Brachypodium sylvaticum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Clematis flammula", "label": "Clematis flammula", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Prangos ferulacea", "label": "Prangos ferulacea", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Foeniculum vulgare", "label": "Foeniculum vulgare", "shape": "dot", "title": "Plant"}, {"color": "#F31C26", "id": "Garrulus glandarius", "label": "Garrulus glandarius", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Emberiza citrinella", "label": "Emberiza citrinella", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Martes", "label": "Martes", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Turdus philomelos", "label": "Turdus philomelos", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Martes martes", "label": "Martes martes", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Prunella modularis", "label": "Prunella modularis", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Sciurus vulgaris", "label": "Sciurus vulgaris", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Hippolais icterina", "label": "Hippolais icterina", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Asio otus", "label": "Asio otus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Fringilla coelebs", "label": "Fringilla coelebs", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Felis catus", "label": "Felis catus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Phylloscopus collybita", "label": "Phylloscopus collybita", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Dendrocopos major", "label": "Dendrocopos major", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Acrocephalus palustris", "label": "Acrocephalus palustris", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Mustela", "label": "Mustela", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Lanius collurio", "label": "Lanius collurio", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Meles meles", "label": "Meles meles", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Luscinia megarhynchos", "label": "Luscinia megarhynchos", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Turdus merula", "label": "Turdus merula", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Strix aluco", "label": "Strix aluco", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Mustela erminea", "label": "Mustela erminea", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Accipiter nisus", "label": "Accipiter nisus", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Mustela nivalis", "label": "Mustela nivalis", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Corvus cornix", "label": "Corvus cornix", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Buteo buteo", "label": "Buteo buteo", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Vulpes vulpes", "label": "Vulpes vulpes", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Accipiter gentilis", "label": "Accipiter gentilis", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Mustela putorius", "label": "Mustela putorius", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Carduelis carduelis", "label": "Carduelis carduelis", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Martes foina", "label": "Martes foina", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Pernis apivorus", "label": "Pernis apivorus", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Erinaceus", "label": "Erinaceus", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Neogale vison", "label": "Neogale vison", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Parus major", "label": "Parus major", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Operophtera", "label": "Operophtera", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Amphipyra", "label": "Amphipyra", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Erannis", "label": "Erannis", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Prunus spinosa", "label": "Prunus spinosa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Hedera helix", "label": "Hedera helix", "shape": "dot", "title": "Plant"}, {"color": "#F31C26", "id": "Astacus leptodactylus", "label": "Astacus leptodactylus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Bufo bufo", "label": "Bufo bufo", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Austropotamobius pallipes", "label": "Austropotamobius pallipes", "shape": "dot", "title": "Animal"}, {"color": "#F31C26", "id": "Procambarus clarkii", "label": "Procambarus clarkii", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Rana italica", "label": "Rana italica", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Pelophylax lessonae", "label": "Pelophylax lessonae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Lampyris noctiluca", "label": "Lampyris noctiluca", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Apodemus sylvaticus", "label": "Apodemus sylvaticus", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Sanicula europaea", "label": "Sanicula europaea", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Myodes glareolus", "label": "Myodes glareolus", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Primula vulgaris", "label": "Primula vulgaris", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Fragaria vesca", "label": "Fragaria vesca", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Oxalis acetosella", "label": "Oxalis acetosella", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Pteridium aquilinum", "label": "Pteridium aquilinum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Quercus robur", "label": "Quercus robur", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ligustrum vulgare", "label": "Ligustrum vulgare", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Dryopteris filix-mas", "label": "Dryopteris filix-mas", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Acer pseudoplatanus", "label": "Acer pseudoplatanus", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Geum urbanum", "label": "Geum urbanum", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Galium aparine", "label": "Galium aparine", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Mercurialis perennis", "label": "Mercurialis perennis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Urtica dioica", "label": "Urtica dioica", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Agrimonia eupatoria", "label": "Agrimonia eupatoria", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Agrimonia procera", "label": "Agrimonia procera", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Glechoma hederacea", "label": "Glechoma hederacea", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Hyacinthoides non-scripta", "label": "Hyacinthoides non-scripta", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Viola riviniana", "label": "Viola riviniana", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ranunculus", "label": "Ranunculus", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Turdus viscivorus", "label": "Turdus viscivorus", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Taxus baccata", "label": "Taxus baccata", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex aquifolium", "label": "Ilex aquifolium", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Turdus iliacus", "label": "Turdus iliacus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Turdus pilaris", "label": "Turdus pilaris", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Lycaena virgaureae", "label": "Lycaena virgaureae", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Rumex acetosella", "label": "Rumex acetosella", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Rumex acetosa", "label": "Rumex acetosa", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Hyles gallii", "label": "Hyles gallii", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Galium spurium", "label": "Galium spurium", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Halidamia affinis", "label": "Halidamia affinis", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sturnus vulgaris", "label": "Sturnus vulgaris", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Ilex", "label": "Ilex", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Erithacus rubecula", "label": "Erithacus rubecula", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Ilex yunnanensis", "label": "Ilex yunnanensis", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex integra", "label": "Ilex integra", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex ciliospinosa", "label": "Ilex ciliospinosa", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex decidua", "label": "Ilex decidua", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex dipyrena", "label": "Ilex dipyrena", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex crenata", "label": "Ilex crenata", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex maximowicziana", "label": "Ilex maximowicziana", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex serrata", "label": "Ilex serrata", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex cornuta", "label": "Ilex cornuta", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex latifolia", "label": "Ilex latifolia", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex pernyi", "label": "Ilex pernyi", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex opaca", "label": "Ilex opaca", "shape": "dot", "title": "Plant"}, {"color": "#A5EE34", "id": "Ilex verticillata", "label": "Ilex verticillata", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Drosophila melanogaster", "label": "Drosophila melanogaster", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Aedes aegypti", "label": "Aedes aegypti", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Odonata", "label": "Odonata", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Cicada orni", "label": "Cicada orni", "shape": "dot", "title": "Animal"}, {"color": "#A5EE34", "id": "Quercus ilex", "label": "Quercus ilex", "shape": "dot", "title": "Plant"}, {"color": "#F3911C", "id": "Cervus elaphus", "label": "Cervus elaphus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Lepus europaeus", "label": "Lepus europaeus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Soricidae", "label": "Soricidae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Microtus oeconomus", "label": "Microtus oeconomus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sus scrofa", "label": "Sus scrofa", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Sciuridae", "label": "Sciuridae", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Microtus", "label": "Microtus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Apodemus flavicollis", "label": "Apodemus flavicollis", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Ovis aries", "label": "Ovis aries", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Talpa europaea", "label": "Talpa europaea", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Apodemus", "label": "Apodemus", "shape": "dot", "title": "Animal"}, {"color": "#F3911C", "id": "Cervidae", "label": "Cervidae", "shape": "dot", "title": "Animal"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Aphis fabae"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Stenocranus major"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Trichoptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Heteroptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Dysaphis"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Formicidae"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Chrysopidae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Araneae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Lepidoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Heteroptera"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Apidae"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Ephemeroptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Heteroptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Sitobion avenae"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Lepyronia coleoptrata"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Myzus persicae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Anoecia corni"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Apidae"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Aphis fabae"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Araneae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Dicranotropis hamata"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Thysanoptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Thysanoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Empoasca"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Hyalopterus pruni"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Formicidae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Trichoptera"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Aphis fabae"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Chrysopidae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Kelisia punctulum"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Araneae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Apidae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Ephemeroptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Stenocranus major"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Hemiptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Anoecia corni"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Ephemeroptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Rhopalosiphum padi"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Thysanoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Panorpidae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Dysaphis"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Cicadula quadrinotata"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Aphis"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Lepidoptera"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Formicidae"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Formicidae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Evacanthus interruptus"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Erzaleus metrius"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Kelisia punctulum"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Ephemeroptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Lepyronia coleoptrata"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Rhopalosiphum padi"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Kelisia punctulum"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Stenocranus major"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Thysanoptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Panorpidae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Cicadella viridis"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Trichoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Rhopalosiphum padi"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Araneae"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Cicadula quadrinotata"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Araneae"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Typhlocybinae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Stenocranus major"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Lepidoptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Javesella pellucida"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Orthoptera"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Hemiptera"}, {"arrows": "to", "from": "Metellina segmentata", "title": "consumes", "to": "Kelisia punctulum"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Tetragnatha extensa", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Anoecia corni"}, {"arrows": "to", "from": "Larinioides cornutus", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Ephemeroptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Lepidoptera"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Erzaleus metrius"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Thysanoptera"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Apidae"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Sitobion"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Aphrodes bicincta"}, {"arrows": "to", "from": "Argiope bruennichi", "title": "consumes", "to": "Aphidini"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Anoecia corni"}, {"arrows": "to", "from": "Araneus quadratus", "title": "consumes", "to": "Cicadoidea"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Trichoptera"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Pistacia terebinthus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Phillyrea latifolia"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Phillyrea angustifolia"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Juniperus oxycedrus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Celtis australis"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Ligustrum japonicum"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Olea europaea"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Myrtus communis"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Vitis vinifera"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Rhamnus lycioides"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Osyris quadripartita"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Lonicera implexa"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Daphne gnidium"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Rubus ulmifolius"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Pistacia lentiscus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Iris foetidissima"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Arbutus unedo"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Rubia peregrina"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Solanum nigrum"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Asparagus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Lonicera periclymenum"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Cydonia oblonga"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Osyris alba"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Dioscorea communis"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Viburnum tinus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Ficus carica"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Smilax aspera"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Rosa"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Solanum dulcamara"}, {"arrows": "to", "from": "Sylvia borin", "title": "consumes", "to": "Solanum dulcamara"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Hippophae"}, {"arrows": "to", "from": "Curruca curruca", "title": "consumes", "to": "Ribes nigrum"}, {"arrows": "to", "from": "Curruca curruca", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Sylvia borin", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Sylvia borin", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Curruca curruca", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Sylvia atricapilla", "title": "consumes", "to": "Ribes nigrum"}, {"arrows": "to", "from": "Curruca curruca", "title": "consumes", "to": "Solanum dulcamara"}, {"arrows": "to", "from": "Sylvia borin", "title": "consumes", "to": "Ribes nigrum"}, {"arrows": "to", "from": "Sylvia borin", "title": "consumes", "to": "Hippophae"}, {"arrows": "to", "from": "Curruca curruca", "title": "consumes", "to": "Hippophae"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Passeriformes"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Hymenoptera"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Isopoda"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Orthoptera"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Diplopoda"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Lepidoptera"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Diptera"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Heteroptera"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Annelida"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Rodentia"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Araneidae"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Coleoptera"}, {"arrows": "to", "from": "Capreolus capreolus", "title": "consumes", "to": "Fraxinus excelsior"}, {"arrows": "to", "from": "Capreolus capreolus", "title": "consumes", "to": "Betula pendula"}, {"arrows": "to", "from": "Capreolus capreolus", "title": "consumes", "to": "Pinus sylvestris"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cynodon dactylon"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Potentilla reptans"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Acer campestre"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Quercus pyrenaica"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Euonymus europaeus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Vicia sativa"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cistus salviifolius"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cytisus hirsutus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Hedera maderensis"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Carex flacca"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Asparagus acutifolius"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Plantago coronopus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Verbascum sinuatum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Euonymus atropurpureus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Verbascum blattaria"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Ficaria verna verna"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Acer monspessulanum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Pistacia lentiscus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Aremonia agrimonoides"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rhamnus alaternus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Taraxacum officinale"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Dactylis glomerata"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Juncus acutus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Prunus americana"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cytisus scoparius"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Carpinus betulus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rubus ulmifolius"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Symphytum bulbosum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cistus monspeliensis"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Erica arborea"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Quercus pubescens pubescens"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Pyrus communis"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Ranunculus repens"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rosa canina"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Corylus avellana"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rumex bucephalophorus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Verbascum thapsus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Carex distachya"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rubus canescens"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Ruscus aculeatus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Galium mollugo"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Ranunculus bulbosus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Pyrus spinosa"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Smilax aspera"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Cormus domestica"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Osyris alba"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rumex conglomeratus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Syringa vulgaris"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Quercus helferiana"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Olea europaea"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Fraxinus angustifolia"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Torminalis glaberrima"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Arbutus unedo"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Trifolium repens"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Spartium junceum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rumex longifolius"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Galium verum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Phillyrea latifolia"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Prunus cocomilia"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Plantago serraria"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Plantago lanceolata"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rubia peregrina"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rosa sempervirens"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Lonicera etrusca"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Briza maxima"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Trifolium aureum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Alnus glutinosa"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Quercus suber"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Bromus inermis"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Ulmus minor"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Rumex sanguineus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Dioscorea communis"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Trifolium pratense"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Asphodelus ramosus"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Brachypodium sylvaticum"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Clematis flammula"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Prangos ferulacea"}, {"arrows": "to", "from": "Capreolus capreolus italicus", "title": "consumes", "to": "Foeniculum vulgare"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Prunella modularis"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Sciurus vulgaris", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Sciurus vulgaris", "title": "consumes", "to": "Hippolais icterina"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Sylvia borin"}, {"arrows": "to", "from": "Asio otus", "title": "consumes", "to": "Fringilla coelebs"}, {"arrows": "to", "from": "Felis catus", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Dendrocopos major", "title": "consumes", "to": "Fringilla coelebs"}, {"arrows": "to", "from": "Sciurus vulgaris", "title": "consumes", "to": "Fringilla coelebs"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Hippolais icterina"}, {"arrows": "to", "from": "Dendrocopos major", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Acrocephalus palustris"}, {"arrows": "to", "from": "Mustela", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Lanius collurio", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Prunella modularis"}, {"arrows": "to", "from": "Meles meles", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Luscinia megarhynchos"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Fringilla coelebs"}, {"arrows": "to", "from": "Dendrocopos major", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Garrulus glandarius"}, {"arrows": "to", "from": "Lanius collurio", "title": "consumes", "to": "Sylvia borin"}, {"arrows": "to", "from": "Strix aluco", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Mustela erminea", "title": "consumes", "to": "Prunella modularis"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Accipiter nisus", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Accipiter nisus", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Sciurus vulgaris", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Mustela nivalis", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Dendrocopos major", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Corvus cornix", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Buteo buteo", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Accipiter gentilis", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Prunella modularis"}, {"arrows": "to", "from": "Martes", "title": "consumes", "to": "Hippolais icterina"}, {"arrows": "to", "from": "Felis catus", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Mustela", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Buteo buteo", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Martes martes", "title": "consumes", "to": "Sylvia borin"}, {"arrows": "to", "from": "Mustela putorius", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Fringilla coelebs"}, {"arrows": "to", "from": "Dendrocopos major", "title": "consumes", "to": "Carduelis carduelis"}, {"arrows": "to", "from": "Buteo buteo", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Felis catus", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Pica pica", "title": "consumes", "to": "Turdus merula"}, {"arrows": "to", "from": "Martes foina", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Buteo buteo", "title": "consumes", "to": "Turdus philomelos"}, {"arrows": "to", "from": "Pernis apivorus", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Erinaceus", "title": "consumes", "to": "Phylloscopus collybita"}, {"arrows": "to", "from": "Neogale vison", "title": "consumes", "to": "Emberiza citrinella"}, {"arrows": "to", "from": "Lanius collurio", "title": "consumes", "to": "Sylvia atricapilla"}, {"arrows": "to", "from": "Parus major", "title": "consumes", "to": "Operophtera"}, {"arrows": "to", "from": "Parus major", "title": "consumes", "to": "Amphipyra"}, {"arrows": "to", "from": "Parus major", "title": "consumes", "to": "Erannis"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Rosa canina"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Prunus spinosa"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Hedera helix"}, {"arrows": "to", "from": "Astacus leptodactylus", "title": "consumes", "to": "Bufo bufo"}, {"arrows": "to", "from": "Austropotamobius pallipes", "title": "consumes", "to": "Bufo bufo"}, {"arrows": "to", "from": "Procambarus clarkii", "title": "consumes", "to": "Rana italica"}, {"arrows": "to", "from": "Procambarus clarkii", "title": "consumes", "to": "Pelophylax lessonae"}, {"arrows": "to", "from": "Austropotamobius pallipes", "title": "consumes", "to": "Pelophylax lessonae"}, {"arrows": "to", "from": "Procambarus clarkii", "title": "consumes", "to": "Bufo bufo"}, {"arrows": "to", "from": "Bufo bufo", "title": "consumes", "to": "Lampyris noctiluca"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Sanicula europaea"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Primula vulgaris"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Euonymus europaeus"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Fragaria vesca"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Oxalis acetosella"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Pteridium aquilinum"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Quercus robur"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Ligustrum vulgare"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Fraxinus excelsior"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Dryopteris filix-mas"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Acer pseudoplatanus"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Geum urbanum"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Prunus spinosa"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Galium aparine"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Mercurialis perennis"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Fragaria vesca"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Urtica dioica"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Sambucus nigra"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Agrimonia eupatoria"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Agrimonia procera"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Prunus spinosa"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Rubus"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Glechoma hederacea"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Pteridium aquilinum"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Primula vulgaris"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Hyacinthoides non-scripta"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Mercurialis perennis"}, {"arrows": "to", "from": "Apodemus sylvaticus", "title": "consumes", "to": "Hyacinthoides non-scripta"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Corylus avellana"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Viola riviniana"}, {"arrows": "to", "from": "Myodes glareolus", "title": "consumes", "to": "Ranunculus"}, {"arrows": "to", "from": "Turdus viscivorus", "title": "consumes", "to": "Taxus baccata"}, {"arrows": "to", "from": "Turdus viscivorus", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Turdus iliacus", "title": "consumes", "to": "Taxus baccata"}, {"arrows": "to", "from": "Turdus philomelos", "title": "consumes", "to": "Taxus baccata"}, {"arrows": "to", "from": "Turdus pilaris", "title": "consumes", "to": "Taxus baccata"}, {"arrows": "to", "from": "Turdus iliacus", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Taxus baccata"}, {"arrows": "to", "from": "Turdus philomelos", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Turdus philomelos", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Turdus viscivorus", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Turdus iliacus", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Turdus merula", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Turdus pilaris", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Turdus pilaris", "title": "consumes", "to": "Crataegus monogyna"}, {"arrows": "to", "from": "Lycaena virgaureae", "title": "consumes", "to": "Rumex acetosella"}, {"arrows": "to", "from": "Lycaena virgaureae", "title": "consumes", "to": "Rumex acetosa"}, {"arrows": "to", "from": "Hyles gallii", "title": "consumes", "to": "Galium spurium"}, {"arrows": "to", "from": "Halidamia affinis", "title": "consumes", "to": "Galium aparine"}, {"arrows": "to", "from": "Sturnus vulgaris", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Sturnus vulgaris", "title": "consumes", "to": "Ilex"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex yunnanensis"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex integra"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex ciliospinosa"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex decidua"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex dipyrena"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex crenata"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex maximowicziana"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex serrata"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex cornuta"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex latifolia"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex pernyi"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex opaca"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex verticillata"}, {"arrows": "to", "from": "Erithacus rubecula", "title": "consumes", "to": "Ilex aquifolium"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Araneus diadematus"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Drosophila melanogaster"}, {"arrows": "to", "from": "Araneus diadematus", "title": "consumes", "to": "Aedes aegypti"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Odonata"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Cicada orni"}, {"arrows": "to", "from": "Garrulus glandarius", "title": "consumes", "to": "Quercus ilex"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Cervus elaphus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Lepus europaeus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Soricidae"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Myodes glareolus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Microtus oeconomus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Sus scrofa"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Sciuridae"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Microtus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Apodemus flavicollis"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Capreolus capreolus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Ovis aries"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Talpa europaea"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Apodemus"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Mustela nivalis"}, {"arrows": "to", "from": "Vulpes vulpes", "title": "consumes", "to": "Cervidae"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -50,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

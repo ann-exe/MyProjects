@@ -1,0 +1,993 @@
+Species_1,Kingdom_1,Interaction_type,Species_2,Kingdom_2
+Araneus quadratus,Animal,eats,Aphis fabae,Animal
+Stenocranus major,Animal,eatenBy,Araneus quadratus,Animal
+Aphidini,Animal,eatenBy,Metellina segmentata,Animal
+Tetragnatha extensa,Animal,eats,Trichoptera,Animal
+Araneus quadratus,Animal,eats,Heteroptera,Animal
+Araneus quadratus,Animal,eats,Dysaphis,Animal
+Metellina segmentata,Animal,eats,Formicidae,Animal
+Tetragnatha extensa,Animal,eats,Chrysopidae,Animal
+Araneae,Animal,eatenBy,Argiope bruennichi,Animal
+Lepidoptera,Animal,eatenBy,Argiope bruennichi,Animal
+Heteroptera,Animal,eatenBy,Araneus diadematus,Animal
+Hymenoptera,Animal,eatenBy,Tetragnatha extensa,Animal
+Cicadoidea,Animal,eatenBy,Larinioides cornutus,Animal
+Araneus diadematus,Animal,eats,Apidae,Animal
+Tetragnatha extensa,Animal,eats,Ephemeroptera,Animal
+Hymenoptera,Animal,eatenBy,Argiope bruennichi,Animal
+Heteroptera,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Sitobion avenae,Animal
+Larinioides cornutus,Animal,eats,Diptera,Animal
+Lepyronia coleoptrata,Animal,eatenBy,Araneus diadematus,Animal
+Araneus quadratus,Animal,eats,Myzus persicae,Animal
+Anoecia corni,Animal,eatenBy,Metellina segmentata,Animal
+Apidae,Animal,eatenBy,Larinioides cornutus,Animal
+Aphis fabae,Animal,eatenBy,Araneus diadematus,Animal
+Araneus quadratus,Animal,eats,Araneae,Animal
+Argiope bruennichi,Animal,eats,Dicranotropis hamata,Animal
+Thysanoptera,Animal,eatenBy,Larinioides cornutus,Animal
+Metellina segmentata,Animal,eats,Thysanoptera,Animal
+Araneus diadematus,Animal,eats,Empoasca,Animal
+Hyalopterus pruni,Animal,eatenBy,Argiope bruennichi,Animal
+Formicidae,Animal,eatenBy,Argiope bruennichi,Animal
+Trichoptera,Animal,eatenBy,Metellina segmentata,Animal
+Trichoptera,Animal,eatenBy,Tetragnatha extensa,Animal
+Tetragnatha extensa,Animal,eats,Coleoptera,Animal
+Aphis fabae,Animal,eatenBy,Metellina segmentata,Animal
+Araneus quadratus,Animal,eats,Hymenoptera,Animal
+Argiope bruennichi,Animal,eats,Formicidae,Animal
+Chrysopidae,Animal,eatenBy,Araneus quadratus,Animal
+Argiope bruennichi,Animal,eats,Kelisia punctulum,Animal
+Coleoptera,Animal,eatenBy,Tetragnatha extensa,Animal
+Argiope bruennichi,Animal,eats,Lepidoptera,Animal
+Araneus diadematus,Animal,eats,Aphidini,Animal
+Araneae,Animal,eatenBy,Larinioides cornutus,Animal
+Apidae,Animal,eatenBy,Argiope bruennichi,Animal
+Metellina segmentata,Animal,eats,Ephemeroptera,Animal
+Diptera,Animal,eatenBy,Argiope bruennichi,Animal
+Stenocranus major,Animal,eatenBy,Araneus diadematus,Animal
+Larinioides cornutus,Animal,eats,Hemiptera,Animal
+Anoecia corni,Animal,eatenBy,Araneus diadematus,Animal
+Larinioides cornutus,Animal,eats,Thysanoptera,Animal
+Ephemeroptera,Animal,eatenBy,Larinioides cornutus,Animal
+Araneus quadratus,Animal,eats,Diptera,Animal
+Rhopalosiphum padi,Animal,eatenBy,Araneus quadratus,Animal
+Formicidae,Animal,eatenBy,Metellina segmentata,Animal
+Diptera,Animal,eatenBy,Metellina segmentata,Animal
+Araneus quadratus,Animal,eats,Thysanoptera,Animal
+Chrysopidae,Animal,eatenBy,Tetragnatha extensa,Animal
+Argiope bruennichi,Animal,eats,Panorpidae,Animal
+Metellina segmentata,Animal,eats,Dysaphis,Animal
+Larinioides cornutus,Animal,eats,Ephemeroptera,Animal
+Argiope bruennichi,Animal,eats,Cicadula quadrinotata,Animal
+Araneus diadematus,Animal,eats,Aphis,Animal
+Cicadoidea,Animal,eatenBy,Metellina segmentata,Animal
+Sitobion avenae,Animal,eatenBy,Araneus quadratus,Animal
+Tetragnatha extensa,Animal,eats,Cicadoidea,Animal
+Lepidoptera,Animal,eatenBy,Araneus diadematus,Animal
+Larinioides cornutus,Animal,eats,Aphidini,Animal
+Araneus diadematus,Animal,eats,Formicidae,Animal
+Empoasca,Animal,eatenBy,Araneus diadematus,Animal
+Formicidae,Animal,eatenBy,Araneus quadratus,Animal
+Evacanthus interruptus,Animal,eatenBy,Metellina segmentata,Animal
+Diptera,Animal,eatenBy,Tetragnatha extensa,Animal
+Erzaleus metrius,Animal,eatenBy,Argiope bruennichi,Animal
+Dysaphis,Animal,eatenBy,Metellina segmentata,Animal
+Metellina segmentata,Animal,eats,Cicadoidea,Animal
+Argiope bruennichi,Animal,eats,Heteroptera,Animal
+Metellina segmentata,Animal,eats,Diptera,Animal
+Araneus quadratus,Animal,eats,Kelisia punctulum,Animal
+Araneus quadratus,Animal,eats,Ephemeroptera,Animal
+Hymenoptera,Animal,eatenBy,Metellina segmentata,Animal
+Argiope bruennichi,Animal,eats,Lepyronia coleoptrata,Animal
+Araneus diadematus,Animal,eats,Lepyronia coleoptrata,Animal
+Araneus diadematus,Animal,eats,Rhopalosiphum padi,Animal
+Araneus diadematus,Animal,eats,Coleoptera,Animal
+Heteroptera,Animal,eatenBy,Araneus quadratus,Animal
+Kelisia punctulum,Animal,eatenBy,Araneus diadematus,Animal
+Stenocranus major,Animal,eatenBy,Metellina segmentata,Animal
+Ephemeroptera,Animal,eatenBy,Araneus quadratus,Animal
+Argiope bruennichi,Animal,eats,Hymenoptera,Animal
+Thysanoptera,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Aphidini,Animal
+Larinioides cornutus,Animal,eats,Coleoptera,Animal
+Metellina segmentata,Animal,eats,Aphidini,Animal
+Coleoptera,Animal,eatenBy,Araneus diadematus,Animal
+Hemiptera,Animal,eatenBy,Larinioides cornutus,Animal
+Argiope bruennichi,Animal,eats,Hyalopterus pruni,Animal
+Araneus diadematus,Animal,eats,Panorpidae,Animal
+Argiope bruennichi,Animal,eats,Cicadella viridis,Animal
+Myzus persicae,Animal,eatenBy,Araneus quadratus,Animal
+Panorpidae,Animal,eatenBy,Araneus diadematus,Animal
+Larinioides cornutus,Animal,eats,Trichoptera,Animal
+Argiope bruennichi,Animal,eats,Araneae,Animal
+Araneus diadematus,Animal,eats,Hymenoptera,Animal
+Rhopalosiphum padi,Animal,eatenBy,Argiope bruennichi,Animal
+Argiope bruennichi,Animal,eats,Apidae,Animal
+Tetragnatha extensa,Animal,eats,Araneae,Animal
+Cicadula quadrinotata,Animal,eatenBy,Metellina segmentata,Animal
+Araneae,Animal,eatenBy,Araneus diadematus,Animal
+Argiope bruennichi,Animal,eats,Rhopalosiphum padi,Animal
+Diptera,Animal,eatenBy,Araneus diadematus,Animal
+Argiope bruennichi,Animal,eats,Thysanoptera,Animal
+Kelisia punctulum,Animal,eatenBy,Argiope bruennichi,Animal
+Metellina segmentata,Animal,eats,Typhlocybinae,Animal
+Argiope bruennichi,Animal,eats,Stenocranus major,Animal
+Metellina segmentata,Animal,eats,Cicadula quadrinotata,Animal
+Larinioides cornutus,Animal,eats,Apidae,Animal
+Araneus diadematus,Animal,eats,Diptera,Animal
+Araneus diadematus,Animal,eats,Cicadoidea,Animal
+Dicranotropis hamata,Animal,eatenBy,Argiope bruennichi,Animal
+Lepidoptera,Animal,eatenBy,Larinioides cornutus,Animal
+Araneus diadematus,Animal,eats,Kelisia punctulum,Animal
+Diptera,Animal,eatenBy,Araneus quadratus,Animal
+Metellina segmentata,Animal,eats,Javesella pellucida,Animal
+Cicadula quadrinotata,Animal,eatenBy,Argiope bruennichi,Animal
+Apidae,Animal,eatenBy,Araneus diadematus,Animal
+Argiope bruennichi,Animal,eats,Orthoptera,Animal
+Argiope bruennichi,Animal,eats,Erzaleus metrius,Animal
+Araneus diadematus,Animal,eats,Hemiptera,Animal
+Metellina segmentata,Animal,eats,Kelisia punctulum,Animal
+Coleoptera,Animal,eatenBy,Araneus quadratus,Animal
+Typhlocybinae,Animal,eatenBy,Metellina segmentata,Animal
+Ephemeroptera,Animal,eatenBy,Tetragnatha extensa,Animal
+Tetragnatha extensa,Animal,eats,Aphidini,Animal
+Cicadoidea,Animal,eatenBy,Tetragnatha extensa,Animal
+Araneus diadematus,Animal,eats,Araneae,Animal
+Panorpidae,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Coleoptera,Animal
+Hemiptera,Animal,eatenBy,Araneus diadematus,Animal
+Diptera,Animal,eatenBy,Larinioides cornutus,Animal
+Anoecia corni,Animal,eatenBy,Argiope bruennichi,Animal
+Rhopalosiphum padi,Animal,eatenBy,Araneus diadematus,Animal
+Aphis,Animal,eatenBy,Araneus diadematus,Animal
+Thysanoptera,Animal,eatenBy,Metellina segmentata,Animal
+Kelisia punctulum,Animal,eatenBy,Araneus quadratus,Animal
+Araneus diadematus,Animal,eats,Stenocranus major,Animal
+Araneus diadematus,Animal,eats,Heteroptera,Animal
+Hymenoptera,Animal,eatenBy,Larinioides cornutus,Animal
+Kelisia punctulum,Animal,eatenBy,Metellina segmentata,Animal
+Argiope bruennichi,Animal,eats,Ephemeroptera,Animal
+Lepidoptera,Animal,eatenBy,Araneus quadratus,Animal
+Lepyronia coleoptrata,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Lepidoptera,Animal
+Argiope bruennichi,Animal,eats,Coleoptera,Animal
+Larinioides cornutus,Animal,eats,Lepidoptera,Animal
+Erzaleus metrius,Animal,eatenBy,Araneus quadratus,Animal
+Cicadella viridis,Animal,eatenBy,Argiope bruennichi,Animal
+Cicadoidea,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus diadematus,Animal,eats,Thysanoptera,Animal
+Araneus quadratus,Animal,eats,Chrysopidae,Animal
+Cicadoidea,Animal,eatenBy,Araneus diadematus,Animal
+Ephemeroptera,Animal,eatenBy,Argiope bruennichi,Animal
+Tetragnatha extensa,Animal,eats,Diptera,Animal
+Javesella pellucida,Animal,eatenBy,Metellina segmentata,Animal
+Araneus quadratus,Animal,eats,Apidae,Animal
+Argiope bruennichi,Animal,eats,Sitobion,Animal
+Aphrodes bicincta,Animal,eatenBy,Argiope bruennichi,Animal
+Metellina segmentata,Animal,eats,Evacanthus interruptus,Animal
+Metellina segmentata,Animal,eats,Trichoptera,Animal
+Formicidae,Animal,eatenBy,Araneus diadematus,Animal
+Dysaphis,Animal,eatenBy,Araneus quadratus,Animal
+Argiope bruennichi,Animal,eats,Aphidini,Animal
+Sitobion,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Anoecia corni,Animal
+Metellina segmentata,Animal,eats,Anoecia corni,Animal
+Araneus diadematus,Animal,eats,Anoecia corni,Animal
+Aphis fabae,Animal,eatenBy,Araneus quadratus,Animal
+Coleoptera,Animal,eatenBy,Larinioides cornutus,Animal
+Tetragnatha extensa,Animal,eats,Hymenoptera,Animal
+Araneae,Animal,eatenBy,Tetragnatha extensa,Animal
+Hymenoptera,Animal,eatenBy,Araneus diadematus,Animal
+Aphidini,Animal,eatenBy,Araneus quadratus,Animal
+Araneus diadematus,Animal,eats,Aphis fabae,Animal
+Araneae,Animal,eatenBy,Araneus quadratus,Animal
+Araneus quadratus,Animal,eats,Erzaleus metrius,Animal
+Argiope bruennichi,Animal,eats,Aphrodes bicincta,Animal
+Argiope bruennichi,Animal,eats,Diptera,Animal
+Aphidini,Animal,eatenBy,Araneus diadematus,Animal
+Metellina segmentata,Animal,eats,Stenocranus major,Animal
+Argiope bruennichi,Animal,eats,Anoecia corni,Animal
+Orthoptera,Animal,eatenBy,Argiope bruennichi,Animal
+Coleoptera,Animal,eatenBy,Argiope bruennichi,Animal
+Larinioides cornutus,Animal,eats,Araneae,Animal
+Aphidini,Animal,eatenBy,Argiope bruennichi,Animal
+Aphidini,Animal,eatenBy,Larinioides cornutus,Animal
+Araneus quadratus,Animal,eats,Rhopalosiphum padi,Animal
+Araneus quadratus,Animal,eats,Formicidae,Animal
+Stenocranus major,Animal,eatenBy,Argiope bruennichi,Animal
+Araneus quadratus,Animal,eats,Stenocranus major,Animal
+Araneus quadratus,Animal,eats,Cicadoidea,Animal
+Anoecia corni,Animal,eatenBy,Araneus quadratus,Animal
+Araneus diadematus,Animal,eats,Lepidoptera,Animal
+Cicadoidea,Animal,eatenBy,Araneus quadratus,Animal
+Larinioides cornutus,Animal,eats,Cicadoidea,Animal
+Metellina segmentata,Animal,eats,Aphis fabae,Animal
+Metellina segmentata,Animal,eats,Hymenoptera,Animal
+Apidae,Animal,eatenBy,Araneus quadratus,Animal
+Trichoptera,Animal,eatenBy,Larinioides cornutus,Animal
+Argiope bruennichi,Animal,eats,Cicadoidea,Animal
+Thysanoptera,Animal,eatenBy,Araneus quadratus,Animal
+Aphidini,Animal,eatenBy,Tetragnatha extensa,Animal
+Thysanoptera,Animal,eatenBy,Araneus diadematus,Animal
+Ephemeroptera,Animal,eatenBy,Metellina segmentata,Animal
+Larinioides cornutus,Animal,eats,Hymenoptera,Animal
+Hymenoptera,Animal,eatenBy,Araneus quadratus,Animal
+Araneus diadematus,Animal,eats,Trichoptera,Animal
+Trichoptera,Animal,eatenBy,Araneus diadematus,Animal
+Pistacia terebinthus,Plant,eatenBy,Sylvia atricapilla,Animal
+Phillyrea latifolia,Plant,eatenBy,Sylvia atricapilla,Animal
+Phillyrea angustifolia,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Juniperus oxycedrus,Plant
+Celtis australis,Plant,eatenBy,Sylvia atricapilla,Animal
+Ligustrum japonicum,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Olea europaea,Plant
+Sylvia atricapilla,Animal,eats,Myrtus communis,Plant
+Sylvia atricapilla,Animal,eats,Vitis vinifera,Plant
+Sylvia atricapilla,Animal,eats,Rhamnus lycioides,Plant
+Juniperus oxycedrus,Plant,eatenBy,Sylvia atricapilla,Animal
+Osyris quadripartita,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Lonicera implexa,Plant
+Daphne gnidium,Plant,eatenBy,Sylvia atricapilla,Animal
+Rubus ulmifolius,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Pistacia lentiscus,Plant
+Sylvia atricapilla,Animal,eats,Iris foetidissima,Plant
+Sylvia atricapilla,Animal,eats,Daphne gnidium,Plant
+Arbutus unedo,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Rubia peregrina,Plant
+Olea europaea,Plant,eatenBy,Sylvia atricapilla,Animal
+Solanum nigrum,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Ligustrum japonicum,Plant
+Asparagus,Plant,eatenBy,Sylvia atricapilla,Animal
+Lonicera periclymenum,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Phillyrea angustifolia,Plant
+Cydonia oblonga,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Osyris alba,Plant
+Lonicera implexa,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Phillyrea latifolia,Plant
+Sylvia atricapilla,Animal,eats,Dioscorea communis,Plant
+Vitis vinifera,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Arbutus unedo,Plant
+Pistacia lentiscus,Plant,eatenBy,Sylvia atricapilla,Animal
+Viburnum tinus,Plant,eatenBy,Sylvia atricapilla,Animal
+Ficus carica,Plant,eatenBy,Sylvia atricapilla,Animal
+Myrtus communis,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Rubus ulmifolius,Plant
+Sylvia atricapilla,Animal,eats,Celtis australis,Plant
+Sylvia atricapilla,Animal,eats,Solanum nigrum,Plant
+Smilax aspera,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Viburnum tinus,Plant
+Rubia peregrina,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Pistacia terebinthus,Plant
+Sylvia atricapilla,Animal,eats,Osyris quadripartita,Plant
+Rosa,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Lonicera periclymenum,Plant
+Solanum dulcamara,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Cydonia oblonga,Plant
+Sylvia atricapilla,Animal,eats,Smilax aspera,Plant
+Sylvia atricapilla,Animal,eats,Ficus carica,Plant
+Osyris alba,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Solanum dulcamara,Plant
+Sylvia atricapilla,Animal,eats,Asparagus,Plant
+Rhamnus lycioides,Plant,eatenBy,Sylvia atricapilla,Animal
+Dioscorea communis,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Rosa,Plant
+Iris foetidissima,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia borin,Animal,eats,Solanum dulcamara,Plant
+Hippophae,Plant,eatenBy,Sylvia atricapilla,Animal
+Curruca curruca,Animal,eats,Ribes nigrum,Plant
+Rubus,Plant,eatenBy,Curruca curruca,Animal
+Sylvia atricapilla,Animal,eats,Rubus,Plant
+Sambucus nigra,Plant,eatenBy,Sylvia borin,Animal
+Sambucus nigra,Plant,eatenBy,Sylvia atricapilla,Animal
+Rubus,Plant,eatenBy,Sylvia borin,Animal
+Sambucus nigra,Plant,eatenBy,Curruca curruca,Animal
+Ribes nigrum,Plant,eatenBy,Sylvia atricapilla,Animal
+Curruca curruca,Animal,eats,Solanum dulcamara,Plant
+Ribes nigrum,Plant,eatenBy,Sylvia borin,Animal
+Solanum dulcamara,Plant,eatenBy,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eats,Ribes nigrum,Plant
+Sylvia borin,Animal,eats,Hippophae,Plant
+Sylvia borin,Animal,eats,Rubus,Plant
+Solanum dulcamara,Plant,eatenBy,Curruca curruca,Animal
+Sylvia atricapilla,Animal,eats,Sambucus nigra,Plant
+Curruca curruca,Animal,eats,Sambucus nigra,Plant
+Sylvia borin,Animal,eats,Sambucus nigra,Plant
+Sylvia atricapilla,Animal,eats,Hippophae,Plant
+Rubus,Plant,eatenBy,Sylvia atricapilla,Animal
+Hippophae,Plant,eatenBy,Curruca curruca,Animal
+Curruca curruca,Animal,eats,Rubus,Plant
+Solanum dulcamara,Plant,eatenBy,Sylvia borin,Animal
+Sylvia borin,Animal,eats,Ribes nigrum,Plant
+Curruca curruca,Animal,eats,Hippophae,Plant
+Hippophae,Plant,eatenBy,Sylvia borin,Animal
+Sylvia atricapilla,Animal,eats,Solanum dulcamara,Plant
+Ribes nigrum,Plant,eatenBy,Curruca curruca,Animal
+Passeriformes,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Hymenoptera,Animal
+Isopoda,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Orthoptera,Animal
+Diplopoda,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Lepidoptera,Animal
+Diptera,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Diplopoda,Animal
+Pica pica,Animal,eats,Heteroptera,Animal
+Pica pica,Animal,eats,Passeriformes,Animal
+Annelida,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Annelida,Animal
+Rodentia,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Rodentia,Animal
+Araneidae,Animal,eatenBy,Pica pica,Animal
+Lepidoptera,Animal,eatenBy,Pica pica,Animal
+Orthoptera,Animal,eatenBy,Pica pica,Animal
+Heteroptera,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Araneidae,Animal
+Pica pica,Animal,eats,Isopoda,Animal
+Pica pica,Animal,eats,Coleoptera,Animal
+Hymenoptera,Animal,eatenBy,Pica pica,Animal
+Coleoptera,Animal,eatenBy,Pica pica,Animal
+Pica pica,Animal,eats,Diptera,Animal
+Fraxinus excelsior,Plant,eatenBy,Capreolus capreolus,Animal
+Betula pendula,Plant,eatenBy,Capreolus capreolus,Animal
+Capreolus capreolus,Animal,eats,Betula pendula,Plant
+Capreolus capreolus,Animal,eats,Pinus sylvestris,Plant
+Pinus sylvestris,Plant,eatenBy,Capreolus capreolus,Animal
+Capreolus capreolus,Animal,eats,Fraxinus excelsior,Plant
+Capreolus capreolus italicus,Animal,eats,Cynodon dactylon,Plant
+Potentilla reptans,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Acer campestre,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Quercus pyrenaica,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Euonymus europaeus,Plant
+Crataegus monogyna,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Vicia sativa,Plant
+Cistus salviifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Cytisus hirsutus,Plant
+Hedera maderensis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Carex flacca,Plant
+Asparagus acutifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Plantago coronopus,Plant
+Verbascum sinuatum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Euonymus atropurpureus,Plant
+Verbascum blattaria,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Ficaria verna verna,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Acer monspessulanum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Pistacia lentiscus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Aremonia agrimonoides,Plant
+Capreolus capreolus italicus,Animal,eats,Rhamnus alaternus,Plant
+Capreolus capreolus italicus,Animal,eats,Taraxacum officinale,Plant
+Capreolus capreolus italicus,Animal,eats,Dactylis glomerata,Plant
+Capreolus capreolus italicus,Animal,eats,Juncus acutus,Plant
+Capreolus capreolus italicus,Animal,eats,Prunus americana,Plant
+Capreolus capreolus italicus,Animal,eats,Juncus acutus,Plant
+Cytisus scoparius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Carpinus betulus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Rubus ulmifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Dactylis glomerata,Plant
+Symphytum bulbosum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Cistus monspeliensis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Erica arborea,Plant
+Quercus pubescens pubescens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Taraxacum officinale,Plant
+Pyrus communis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Ranunculus repens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Acer campestre,Plant
+Capreolus capreolus italicus,Animal,eats,Rosa canina,Plant
+Capreolus capreolus italicus,Animal,eats,Carex flacca,Plant
+Plantago coronopus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Corylus avellana,Plant
+Capreolus capreolus italicus,Animal,eats,Rumex bucephalophorus,Plant
+Verbascum thapsus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Verbascum sinuatum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Erica arborea,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Carex distachya,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Erica arborea,Plant
+Capreolus capreolus italicus,Animal,eats,Rubus ulmifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Asparagus acutifolius,Plant
+Rubus canescens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Crataegus monogyna,Plant
+Ruscus aculeatus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Galium mollugo,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ficaria verna verna,Plant
+Euonymus europaeus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Plantago coronopus,Plant
+Ranunculus bulbosus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Pyrus spinosa,Plant
+Capreolus capreolus italicus,Animal,eats,Crataegus monogyna,Plant
+Smilax aspera,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Euonymus europaeus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Cynodon dactylon,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Aremonia agrimonoides,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Cormus domestica,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Osyris alba,Plant
+Capreolus capreolus italicus,Animal,eats,Carpinus betulus,Plant
+Capreolus capreolus italicus,Animal,eats,Rumex conglomeratus,Plant
+Syringa vulgaris,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Syringa vulgaris,Plant
+Carex distachya,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Verbascum blattaria,Plant
+Quercus helferiana,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Vicia sativa,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Olea europaea,Plant
+Capreolus capreolus italicus,Animal,eats,Fraxinus angustifolia,Plant
+Capreolus capreolus italicus,Animal,eats,Torminalis glaberrima,Plant
+Arbutus unedo,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Trifolium repens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Corylus avellana,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Olea europaea,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Smilax aspera,Plant
+Capreolus capreolus italicus,Animal,eats,Quercus pubescens pubescens,Plant
+Spartium junceum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Rumex longifolius,Plant
+Rumex longifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Galium verum,Plant
+Capreolus capreolus italicus,Animal,eats,Phillyrea latifolia,Plant
+Capreolus capreolus italicus,Animal,eats,Corylus avellana,Plant
+Capreolus capreolus italicus,Animal,eats,Prunus cocomilia,Plant
+Capreolus capreolus italicus,Animal,eats,Fraxinus angustifolia,Plant
+Ruscus aculeatus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Cistus monspeliensis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Osyris alba,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Verbascum blattaria,Plant
+Verbascum blattaria,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Acer monspessulanum,Plant
+Plantago serraria,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Plantago lanceolata,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ranunculus bulbosus,Plant
+Capreolus capreolus italicus,Animal,eats,Quercus pubescens pubescens,Plant
+Rubia peregrina,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ficaria verna verna,Plant
+Capreolus capreolus italicus,Animal,eats,Rumex bucephalophorus,Plant
+Rosa sempervirens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Symphytum bulbosum,Plant
+Capreolus capreolus italicus,Animal,eats,Lonicera etrusca,Plant
+Briza maxima,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Ranunculus repens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rubus ulmifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Carex distachya,Plant
+Capreolus capreolus italicus,Animal,eats,Trifolium aureum,Plant
+Juncus acutus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Hedera maderensis,Plant
+Rumex longifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Alnus glutinosa,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Taraxacum officinale,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Carex distachya,Plant
+Rumex bucephalophorus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Quercus suber,Plant
+Capreolus capreolus italicus,Animal,eats,Ruscus aculeatus,Plant
+Capreolus capreolus italicus,Animal,eats,Bromus inermis,Plant
+Capreolus capreolus italicus,Animal,eats,Aremonia agrimonoides,Plant
+Capreolus capreolus italicus,Animal,eats,Rubus canescens,Plant
+Dactylis glomerata,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ranunculus bulbosus,Plant
+Spartium junceum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Lonicera etrusca,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Quercus suber,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Plantago coronopus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Plantago lanceolata,Plant
+Capreolus capreolus italicus,Animal,eats,Potentilla reptans,Plant
+Capreolus capreolus italicus,Animal,eats,Ulmus minor,Plant
+Capreolus capreolus italicus,Animal,eats,Cistus salviifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Verbascum thapsus,Plant
+Capreolus capreolus italicus,Animal,eats,Hedera maderensis,Plant
+Capreolus capreolus italicus,Animal,eats,Rumex sanguineus,Plant
+Capreolus capreolus italicus,Animal,eats,Galium mollugo,Plant
+Quercus pubescens pubescens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Verbascum sinuatum,Plant
+Capreolus capreolus italicus,Animal,eats,Cormus domestica,Plant
+Ranunculus bulbosus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Asparagus acutifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Dioscorea communis,Plant
+Capreolus capreolus italicus,Animal,eats,Asparagus acutifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Cytisus scoparius,Plant
+Carex flacca,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Trifolium pratense,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Galium verum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Briza maxima,Plant
+Capreolus capreolus italicus,Animal,eats,Quercus pyrenaica,Plant
+Asphodelus ramosus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Asphodelus ramosus,Plant
+Rumex sanguineus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Alnus glutinosa,Plant
+Capreolus capreolus italicus,Animal,eats,Euonymus europaeus,Plant
+Potentilla reptans,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Verbascum sinuatum,Plant
+Capreolus capreolus italicus,Animal,eats,Cistus salviifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Plantago serraria,Plant
+Capreolus capreolus italicus,Animal,eats,Smilax aspera,Plant
+Taraxacum officinale,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Alnus glutinosa,Plant
+Trifolium pratense,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Galium mollugo,Plant
+Capreolus capreolus italicus,Animal,eats,Rubia peregrina,Plant
+Capreolus capreolus italicus,Animal,eats,Trifolium pratense,Plant
+Syringa vulgaris,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ruscus aculeatus,Plant
+Capreolus capreolus italicus,Animal,eats,Pyrus communis,Plant
+Galium verum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rhamnus alaternus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Torminalis glaberrima,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Cistus monspeliensis,Plant
+Dactylis glomerata,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Juncus acutus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Rosa sempervirens,Plant
+Ulmus minor,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Plantago lanceolata,Plant
+Plantago lanceolata,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Prunus americana,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ranunculus repens,Plant
+Hedera maderensis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Aremonia agrimonoides,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Fraxinus angustifolia,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Galium mollugo,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Erica arborea,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Brachypodium sylvaticum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Pistacia lentiscus,Plant
+Smilax aspera,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Trifolium repens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Alnus glutinosa,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Prunus cocomilia,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Trifolium aureum,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rumex conglomeratus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Rumex longifolius,Plant
+Capreolus capreolus italicus,Animal,eats,Rumex conglomeratus,Plant
+Capreolus capreolus italicus,Animal,eats,Rubus canescens,Plant
+Capreolus capreolus italicus,Animal,eats,Potentilla reptans,Plant
+Cytisus hirsutus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Spartium junceum,Plant
+Fraxinus angustifolia,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Spartium junceum,Plant
+Corylus avellana,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rubus canescens,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Carex flacca,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Galium verum,Plant
+Ficaria verna verna,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Trifolium repens,Plant
+Capreolus capreolus italicus,Animal,eats,Arbutus unedo,Plant
+Rubus ulmifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Clematis flammula,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Ranunculus repens,Plant
+Phillyrea latifolia,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Euonymus atropurpureus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Prangos ferulacea,Plant
+Capreolus capreolus italicus,Animal,eats,Cistus monspeliensis,Plant
+Pyrus spinosa,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Foeniculum vulgare,Plant
+Prangos ferulacea,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Dioscorea communis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Bromus inermis,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rumex bucephalophorus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Clematis flammula,Plant
+Rumex conglomeratus,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Cistus salviifolius,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Crataegus monogyna,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Capreolus capreolus italicus,Animal,eats,Syringa vulgaris,Plant
+Capreolus capreolus italicus,Animal,eats,Brachypodium sylvaticum,Plant
+Capreolus capreolus italicus,Animal,eats,Trifolium repens,Plant
+Capreolus capreolus italicus,Animal,eats,Trifolium pratense,Plant
+Capreolus capreolus italicus,Animal,eats,Quercus helferiana,Plant
+Foeniculum vulgare,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Rosa canina,Plant,eatenBy,Capreolus capreolus italicus,Animal
+Emberiza citrinella,Animal,eatenBy,Garrulus glandarius,Animal
+Martes,Animal,eats,Turdus philomelos,Animal
+Martes,Animal,eats,Emberiza citrinella,Animal
+Turdus philomelos,Animal,eatenBy,Garrulus glandarius,Animal
+Prunella modularis,Animal,eatenBy,Martes martes,Animal
+Garrulus glandarius,Animal,eats,Sylvia atricapilla,Animal
+Sciurus vulgaris,Animal,eats,Sylvia atricapilla,Animal
+Sciurus vulgaris,Animal,eats,Hippolais icterina,Animal
+Sylvia borin,Animal,eatenBy,Martes,Animal
+Fringilla coelebs,Animal,eatenBy,Asio otus,Animal
+Felis catus,Animal,eats,Phylloscopus collybita,Animal
+Dendrocopos major,Animal,eats,Fringilla coelebs,Animal
+Sciurus vulgaris,Animal,eats,Fringilla coelebs,Animal
+Turdus philomelos,Animal,eatenBy,Garrulus glandarius,Animal
+Martes,Animal,eats,Sylvia atricapilla,Animal
+Hippolais icterina,Animal,eatenBy,Martes martes,Animal
+Dendrocopos major,Animal,eats,Turdus philomelos,Animal
+Acrocephalus palustris,Animal,eatenBy,Martes,Animal
+Sylvia atricapilla,Animal,eatenBy,Sciurus vulgaris,Animal
+Martes,Animal,eats,Sylvia borin,Animal
+Mustela,Animal,eats,Turdus philomelos,Animal
+Emberiza citrinella,Animal,eatenBy,Lanius collurio,Animal
+Prunella modularis,Animal,eatenBy,Garrulus glandarius,Animal
+Emberiza citrinella,Animal,eatenBy,Meles meles,Animal
+Luscinia megarhynchos,Animal,eatenBy,Martes,Animal
+Garrulus glandarius,Animal,eats,Sylvia atricapilla,Animal
+Fringilla coelebs,Animal,eatenBy,Sciurus vulgaris,Animal
+Martes,Animal,eats,Fringilla coelebs,Animal
+Sylvia atricapilla,Animal,eatenBy,Dendrocopos major,Animal
+Martes martes,Animal,eats,Turdus philomelos,Animal
+Martes,Animal,eats,Turdus merula,Animal
+Garrulus glandarius,Animal,eatenBy,Martes,Animal
+Sylvia borin,Animal,eatenBy,Lanius collurio,Animal
+Sylvia atricapilla,Animal,eatenBy,Strix aluco,Animal
+Prunella modularis,Animal,eatenBy,Mustela erminea,Animal
+Martes martes,Animal,eats,Turdus merula,Animal
+Turdus philomelos,Animal,eatenBy,Dendrocopos major,Animal
+Turdus philomelos,Animal,eatenBy,Accipiter nisus,Animal
+Turdus merula,Animal,eatenBy,Garrulus glandarius,Animal
+Phylloscopus collybita,Animal,eatenBy,Felis catus,Animal
+Accipiter nisus,Animal,eats,Turdus merula,Animal
+Turdus merula,Animal,eatenBy,Martes,Animal
+Martes martes,Animal,eats,Prunella modularis,Animal
+Martes,Animal,eats,Fringilla coelebs,Animal
+Phylloscopus collybita,Animal,eatenBy,Garrulus glandarius,Animal
+Turdus merula,Animal,eatenBy,Sciurus vulgaris,Animal
+Mustela nivalis,Animal,eats,Phylloscopus collybita,Animal
+Turdus merula,Animal,eatenBy,Dendrocopos major,Animal
+Martes martes,Animal,eats,Hippolais icterina,Animal
+Emberiza citrinella,Animal,eatenBy,Martes,Animal
+Turdus merula,Animal,eatenBy,Martes martes,Animal
+Sciurus vulgaris,Animal,eats,Turdus merula,Animal
+Corvus cornix,Animal,eats,Turdus merula,Animal
+Emberiza citrinella,Animal,eatenBy,Buteo buteo,Animal
+Pica pica,Animal,eats,Turdus philomelos,Animal
+Martes,Animal,eats,Emberiza citrinella,Animal
+Dendrocopos major,Animal,eats,Turdus merula,Animal
+Martes,Animal,eats,Sylvia borin,Animal
+Mustela erminea,Animal,eats,Prunella modularis,Animal
+Martes,Animal,eats,Garrulus glandarius,Animal
+Sylvia atricapilla,Animal,eatenBy,Vulpes vulpes,Animal
+Martes,Animal,eats,Luscinia megarhynchos,Animal
+Accipiter gentilis,Animal,eats,Sylvia atricapilla,Animal
+Martes,Animal,eats,Prunella modularis,Animal
+Garrulus glandarius,Animal,eats,Phylloscopus collybita,Animal
+Asio otus,Animal,eats,Fringilla coelebs,Animal
+Prunella modularis,Animal,eatenBy,Martes,Animal
+Martes,Animal,eats,Hippolais icterina,Animal
+Turdus merula,Animal,eatenBy,Sciurus vulgaris,Animal
+Emberiza citrinella,Animal,eatenBy,Felis catus,Animal
+Fringilla coelebs,Animal,eatenBy,Martes,Animal
+Martes martes,Animal,eats,Sylvia atricapilla,Animal
+Lanius collurio,Animal,eats,Emberiza citrinella,Animal
+Accipiter nisus,Animal,eats,Turdus philomelos,Animal
+Garrulus glandarius,Animal,eatenBy,Martes,Animal
+Garrulus glandarius,Animal,eats,Prunella modularis,Animal
+Mustela,Animal,eats,Phylloscopus collybita,Animal
+Martes martes,Animal,eats,Turdus merula,Animal
+Sylvia borin,Animal,eatenBy,Martes,Animal
+Prunella modularis,Animal,eatenBy,Martes,Animal
+Hippolais icterina,Animal,eatenBy,Martes,Animal
+Turdus merula,Animal,eatenBy,Buteo buteo,Animal
+Martes martes,Animal,eats,Sylvia borin,Animal
+Turdus merula,Animal,eatenBy,Martes,Animal
+Dendrocopos major,Animal,eats,Turdus merula,Animal
+Phylloscopus collybita,Animal,eatenBy,Mustela putorius,Animal
+Sylvia atricapilla,Animal,eatenBy,Sciurus vulgaris,Animal
+Sylvia borin,Animal,eatenBy,Martes martes,Animal
+Garrulus glandarius,Animal,eats,Phylloscopus collybita,Animal
+Turdus merula,Animal,eatenBy,Dendrocopos major,Animal
+Sylvia atricapilla,Animal,eatenBy,Martes,Animal
+Turdus philomelos,Animal,eatenBy,Dendrocopos major,Animal
+Sciurus vulgaris,Animal,eats,Sylvia atricapilla,Animal
+Dendrocopos major,Animal,eats,Sylvia atricapilla,Animal
+Fringilla coelebs,Animal,eatenBy,Martes,Animal
+Buteo buteo,Animal,eats,Turdus merula,Animal
+Meles meles,Animal,eats,Emberiza citrinella,Animal
+Sylvia atricapilla,Animal,eatenBy,Accipiter gentilis,Animal
+Garrulus glandarius,Animal,eats,Turdus merula,Animal
+Sciurus vulgaris,Animal,eats,Turdus merula,Animal
+Turdus philomelos,Animal,eatenBy,Martes martes,Animal
+Garrulus glandarius,Animal,eats,Fringilla coelebs,Animal
+Dendrocopos major,Animal,eats,Carduelis carduelis,Animal
+Martes martes,Animal,eats,Prunella modularis,Animal
+Martes,Animal,eats,Sylvia atricapilla,Animal
+Turdus merula,Animal,eatenBy,Accipiter nisus,Animal
+Garrulus glandarius,Animal,eats,Emberiza citrinella,Animal
+Sylvia atricapilla,Animal,eatenBy,Buteo buteo,Animal
+Prunella modularis,Animal,eatenBy,Martes martes,Animal
+Garrulus glandarius,Animal,eats,Emberiza citrinella,Animal
+Phylloscopus collybita,Animal,eatenBy,Mustela,Animal
+Martes,Animal,eats,Acrocephalus palustris,Animal
+Sylvia atricapilla,Animal,eatenBy,Felis catus,Animal
+Garrulus glandarius,Animal,eats,Prunella modularis,Animal
+Sciurus vulgaris,Animal,eats,Hippolais icterina,Animal
+Martes,Animal,eats,Prunella modularis,Animal
+Pica pica,Animal,eats,Turdus merula,Animal
+Martes foina,Animal,eats,Turdus philomelos,Animal
+Phylloscopus collybita,Animal,eatenBy,Mustela,Animal
+Martes martes,Animal,eats,Turdus philomelos,Animal
+Hippolais icterina,Animal,eatenBy,Martes martes,Animal
+Turdus philomelos,Animal,eatenBy,Buteo buteo,Animal
+Sylvia atricapilla,Animal,eatenBy,Pernis apivorus,Animal
+Buteo buteo,Animal,eats,Turdus philomelos,Animal
+Pernis apivorus,Animal,eats,Sylvia atricapilla,Animal
+Turdus merula,Animal,eatenBy,Garrulus glandarius,Animal
+Vulpes vulpes,Animal,eats,Sylvia atricapilla,Animal
+Turdus philomelos,Animal,eatenBy,Buteo buteo,Animal
+Buteo buteo,Animal,eats,Sylvia atricapilla,Animal
+Turdus merula,Animal,eatenBy,Corvus cornix,Animal
+Felis catus,Animal,eats,Sylvia atricapilla,Animal
+Mustela,Animal,eats,Phylloscopus collybita,Animal
+Sylvia atricapilla,Animal,eatenBy,Buteo buteo,Animal
+Sylvia atricapilla,Animal,eatenBy,Martes martes,Animal
+Sylvia borin,Animal,eatenBy,Martes martes,Animal
+Garrulus glandarius,Animal,eats,Turdus philomelos,Animal
+Dendrocopos major,Animal,eats,Sylvia atricapilla,Animal
+Sciurus vulgaris,Animal,eats,Fringilla coelebs,Animal
+Turdus philomelos,Animal,eatenBy,Martes,Animal
+Buteo buteo,Animal,eats,Turdus philomelos,Animal
+Erinaceus,Animal,eats,Phylloscopus collybita,Animal
+Phylloscopus collybita,Animal,eatenBy,Mustela nivalis,Animal
+Phylloscopus collybita,Animal,eatenBy,Erinaceus,Animal
+Martes,Animal,eats,Turdus philomelos,Animal
+Fringilla coelebs,Animal,eatenBy,Garrulus glandarius,Animal
+Martes martes,Animal,eats,Sylvia borin,Animal
+Luscinia megarhynchos,Animal,eatenBy,Martes,Animal
+Buteo buteo,Animal,eats,Sylvia atricapilla,Animal
+Turdus merula,Animal,eatenBy,Pica pica,Animal
+Turdus philomelos,Animal,eatenBy,Martes martes,Animal
+Emberiza citrinella,Animal,eatenBy,Martes,Animal
+Prunella modularis,Animal,eatenBy,Garrulus glandarius,Animal
+Dendrocopos major,Animal,eats,Carduelis carduelis,Animal
+Turdus philomelos,Animal,eatenBy,Mustela,Animal
+Hippolais icterina,Animal,eatenBy,Sciurus vulgaris,Animal
+Sylvia atricapilla,Animal,eatenBy,Dendrocopos major,Animal
+Buteo buteo,Animal,eats,Emberiza citrinella,Animal
+Emberiza citrinella,Animal,eatenBy,Neogale vison,Animal
+Turdus philomelos,Animal,eatenBy,Mustela,Animal
+Martes,Animal,eats,Luscinia megarhynchos,Animal
+Mustela putorius,Animal,eats,Phylloscopus collybita,Animal
+Turdus philomelos,Animal,eatenBy,Martes foina,Animal
+Turdus merula,Animal,eatenBy,Buteo buteo,Animal
+Sylvia atricapilla,Animal,eatenBy,Martes,Animal
+Phylloscopus collybita,Animal,eatenBy,Garrulus glandarius,Animal
+Hippolais icterina,Animal,eatenBy,Sciurus vulgaris,Animal
+Sylvia atricapilla,Animal,eatenBy,Martes martes,Animal
+Martes martes,Animal,eats,Hippolais icterina,Animal
+Martes martes,Animal,eats,Sylvia atricapilla,Animal
+Turdus philomelos,Animal,eatenBy,Pica pica,Animal
+Fringilla coelebs,Animal,eatenBy,Garrulus glandarius,Animal
+Turdus philomelos,Animal,eatenBy,Martes,Animal
+Fringilla coelebs,Animal,eatenBy,Dendrocopos major,Animal
+Carduelis carduelis,Animal,eatenBy,Dendrocopos major,Animal
+Sylvia atricapilla,Animal,eatenBy,Lanius collurio,Animal
+Dendrocopos major,Animal,eats,Fringilla coelebs,Animal
+Garrulus glandarius,Animal,eats,Fringilla coelebs,Animal
+Fringilla coelebs,Animal,eatenBy,Sciurus vulgaris,Animal
+Acrocephalus palustris,Animal,eatenBy,Martes,Animal
+Garrulus glandarius,Animal,eats,Turdus philomelos,Animal
+Martes,Animal,eats,Hippolais icterina,Animal
+Strix aluco,Animal,eats,Sylvia atricapilla,Animal
+Martes,Animal,eats,Acrocephalus palustris,Animal
+Hippolais icterina,Animal,eatenBy,Martes,Animal
+Emberiza citrinella,Animal,eatenBy,Garrulus glandarius,Animal
+Emberiza citrinella,Animal,eatenBy,Buteo buteo,Animal
+Martes,Animal,eats,Garrulus glandarius,Animal
+Martes,Animal,eats,Turdus merula,Animal
+Felis catus,Animal,eats,Emberiza citrinella,Animal
+Neogale vison,Animal,eats,Emberiza citrinella,Animal
+Carduelis carduelis,Animal,eatenBy,Dendrocopos major,Animal
+Garrulus glandarius,Animal,eats,Turdus merula,Animal
+Turdus merula,Animal,eatenBy,Martes martes,Animal
+Mustela,Animal,eats,Turdus philomelos,Animal
+Sylvia atricapilla,Animal,eatenBy,Garrulus glandarius,Animal
+Lanius collurio,Animal,eats,Sylvia atricapilla,Animal
+Sylvia atricapilla,Animal,eatenBy,Garrulus glandarius,Animal
+Buteo buteo,Animal,eats,Turdus merula,Animal
+Buteo buteo,Animal,eats,Emberiza citrinella,Animal
+Dendrocopos major,Animal,eats,Turdus philomelos,Animal
+Fringilla coelebs,Animal,eatenBy,Dendrocopos major,Animal
+Lanius collurio,Animal,eats,Sylvia borin,Animal
+Parus major,Animal,eats,Operophtera,Animal
+Parus major,Animal,eats,Amphipyra,Animal
+Amphipyra,Animal,eatenBy,Parus major,Animal
+Operophtera,Animal,eatenBy,Parus major,Animal
+Parus major,Animal,eats,Erannis,Animal
+Erannis,Animal,eatenBy,Parus major,Animal
+Turdus merula,Animal,eats,Rubus,Plant
+Turdus merula,Animal,eats,Rosa canina,Plant
+Rubus,Plant,eatenBy,Turdus merula,Animal
+Prunus spinosa,Plant,eatenBy,Turdus merula,Animal
+Turdus merula,Animal,eats,Sambucus nigra,Plant
+Turdus merula,Animal,eats,Crataegus monogyna,Plant
+Hedera helix,Plant,eatenBy,Turdus merula,Animal
+Crataegus monogyna,Plant,eatenBy,Turdus merula,Animal
+Turdus merula,Animal,eats,Hedera helix,Plant
+Rosa canina,Plant,eatenBy,Turdus merula,Animal
+Sambucus nigra,Plant,eatenBy,Turdus merula,Animal
+Turdus merula,Animal,eats,Prunus spinosa,Plant
+Bufo bufo,Animal,eatenBy,Astacus leptodactylus,Animal
+Astacus leptodactylus,Animal,eats,Bufo bufo,Animal
+Austropotamobius pallipes,Animal,eats,Bufo bufo,Animal
+Procambarus clarkii,Animal,eats,Rana italica,Animal
+Pelophylax lessonae,Animal,eatenBy,Procambarus clarkii,Animal
+Pelophylax lessonae,Animal,eatenBy,Austropotamobius pallipes,Animal
+Procambarus clarkii,Animal,eats,Pelophylax lessonae,Animal
+Pelophylax lessonae,Animal,eatenBy,Procambarus clarkii,Animal
+Bufo bufo,Animal,eatenBy,Procambarus clarkii,Animal
+Bufo bufo,Animal,eatenBy,Austropotamobius pallipes,Animal
+Pelophylax lessonae,Animal,eatenBy,Austropotamobius pallipes,Animal
+Rana italica,Animal,eatenBy,Procambarus clarkii,Animal
+Procambarus clarkii,Animal,eats,Bufo bufo,Animal
+Procambarus clarkii,Animal,eats,Pelophylax lessonae,Animal
+Austropotamobius pallipes,Animal,eats,Pelophylax lessonae,Animal
+Austropotamobius pallipes,Animal,eats,Pelophylax lessonae,Animal
+Lampyris noctiluca,Animal,eatenBy,Bufo bufo,Animal
+Bufo bufo,Animal,eats,Lampyris noctiluca,Animal
+Sanicula europaea,Plant,eatenBy,Apodemus sylvaticus,Animal
+Primula vulgaris,Plant,eatenBy,Myodes glareolus,Animal
+Euonymus europaeus,Plant,eatenBy,Myodes glareolus,Animal
+Fragaria vesca,Plant,eatenBy,Apodemus sylvaticus,Animal
+Oxalis acetosella,Plant,eatenBy,Myodes glareolus,Animal
+Pteridium aquilinum,Plant,eatenBy,Myodes glareolus,Animal
+Quercus robur,Plant,eatenBy,Myodes glareolus,Animal
+Ligustrum vulgare,Plant,eatenBy,Myodes glareolus,Animal
+Apodemus sylvaticus,Animal,eats,Sanicula europaea,Plant
+Fraxinus excelsior,Plant,eatenBy,Myodes glareolus,Animal
+Dryopteris filix-mas,Plant,eatenBy,Myodes glareolus,Animal
+Sambucus nigra,Plant,eatenBy,Myodes glareolus,Animal
+Acer pseudoplatanus,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Sambucus nigra,Plant
+Myodes glareolus,Animal,eats,Acer pseudoplatanus,Plant
+Myodes glareolus,Animal,eats,Geum urbanum,Plant
+Apodemus sylvaticus,Animal,eats,Prunus spinosa,Plant
+Galium aparine,Plant,eatenBy,Myodes glareolus,Animal
+Mercurialis perennis,Plant,eatenBy,Apodemus sylvaticus,Animal
+Fragaria vesca,Plant,eatenBy,Myodes glareolus,Animal
+Urtica dioica,Plant,eatenBy,Myodes glareolus,Animal
+Apodemus sylvaticus,Animal,eats,Sambucus nigra,Plant
+Agrimonia eupatoria,Plant,eatenBy,Myodes glareolus,Animal
+Agrimonia procera,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Galium aparine,Plant
+Myodes glareolus,Animal,eats,Prunus spinosa,Plant
+Myodes glareolus,Animal,eats,Dryopteris filix-mas,Plant
+Myodes glareolus,Animal,eats,Rubus,Plant
+Rubus,Plant,eatenBy,Apodemus sylvaticus,Animal
+Myodes glareolus,Animal,eats,Euonymus europaeus,Plant
+Myodes glareolus,Animal,eats,Agrimonia procera,Plant
+Myodes glareolus,Animal,eats,Glechoma hederacea,Plant
+Pteridium aquilinum,Plant,eatenBy,Apodemus sylvaticus,Animal
+Apodemus sylvaticus,Animal,eats,Fragaria vesca,Plant
+Glechoma hederacea,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Quercus robur,Plant
+Apodemus sylvaticus,Animal,eats,Primula vulgaris,Plant
+Myodes glareolus,Animal,eats,Agrimonia eupatoria,Plant
+Hyacinthoides non-scripta,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Fraxinus excelsior,Plant
+Myodes glareolus,Animal,eats,Urtica dioica,Plant
+Myodes glareolus,Animal,eats,Oxalis acetosella,Plant
+Myodes glareolus,Animal,eats,Mercurialis perennis,Plant
+Myodes glareolus,Animal,eats,Hyacinthoides non-scripta,Plant
+Apodemus sylvaticus,Animal,eats,Hyacinthoides non-scripta,Plant
+Apodemus sylvaticus,Animal,eats,Pteridium aquilinum,Plant
+Myodes glareolus,Animal,eats,Corylus avellana,Plant
+Myodes glareolus,Animal,eats,Viola riviniana,Plant
+Primula vulgaris,Plant,eatenBy,Apodemus sylvaticus,Animal
+Prunus spinosa,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Fragaria vesca,Plant
+Mercurialis perennis,Plant,eatenBy,Myodes glareolus,Animal
+Rubus,Plant,eatenBy,Myodes glareolus,Animal
+Myodes glareolus,Animal,eats,Ligustrum vulgare,Plant
+Geum urbanum,Plant,eatenBy,Myodes glareolus,Animal
+Apodemus sylvaticus,Animal,eats,Mercurialis perennis,Plant
+Corylus avellana,Plant,eatenBy,Myodes glareolus,Animal
+Viola riviniana,Plant,eatenBy,Myodes glareolus,Animal
+Hyacinthoides non-scripta,Plant,eatenBy,Apodemus sylvaticus,Animal
+Apodemus sylvaticus,Animal,eats,Rubus,Plant
+Myodes glareolus,Animal,eats,Ranunculus,Plant
+Myodes glareolus,Animal,eats,Primula vulgaris,Plant
+Myodes glareolus,Animal,eats,Pteridium aquilinum,Plant
+Sambucus nigra,Plant,eatenBy,Apodemus sylvaticus,Animal
+Ranunculus,Plant,eatenBy,Myodes glareolus,Animal
+Prunus spinosa,Plant,eatenBy,Apodemus sylvaticus,Animal
+Taxus baccata,Plant,eatenBy,Turdus viscivorus,Animal
+Turdus viscivorus,Animal,eats,Ilex aquifolium,Plant
+Ilex aquifolium,Plant,eatenBy,Turdus viscivorus,Animal
+Taxus baccata,Plant,eatenBy,Turdus iliacus,Animal
+Taxus baccata,Plant,eatenBy,Turdus philomelos,Animal
+Taxus baccata,Plant,eatenBy,Turdus pilaris,Animal
+Turdus iliacus,Animal,eats,Taxus baccata,Plant
+Turdus iliacus,Animal,eats,Ilex aquifolium,Plant
+Taxus baccata,Plant,eatenBy,Turdus merula,Animal
+Crataegus monogyna,Plant,eatenBy,Turdus philomelos,Animal
+Turdus philomelos,Animal,eats,Ilex aquifolium,Plant
+Turdus philomelos,Animal,eats,Taxus baccata,Plant
+Turdus pilaris,Animal,eats,Taxus baccata,Plant
+Turdus philomelos,Animal,eats,Crataegus monogyna,Plant
+Turdus merula,Animal,eats,Crataegus monogyna,Plant
+Crataegus monogyna,Plant,eatenBy,Turdus viscivorus,Animal
+Turdus iliacus,Animal,eats,Crataegus monogyna,Plant
+Crataegus monogyna,Plant,eatenBy,Turdus merula,Animal
+Ilex aquifolium,Plant,eatenBy,Turdus merula,Animal
+Turdus viscivorus,Animal,eats,Crataegus monogyna,Plant
+Turdus pilaris,Animal,eats,Ilex aquifolium,Plant
+Crataegus monogyna,Plant,eatenBy,Turdus iliacus,Animal
+Ilex aquifolium,Plant,eatenBy,Turdus iliacus,Animal
+Turdus merula,Animal,eats,Ilex aquifolium,Plant
+Ilex aquifolium,Plant,eatenBy,Turdus pilaris,Animal
+Ilex aquifolium,Plant,eatenBy,Turdus philomelos,Animal
+Turdus viscivorus,Animal,eats,Taxus baccata,Plant
+Crataegus monogyna,Plant,eatenBy,Turdus pilaris,Animal
+Turdus pilaris,Animal,eats,Crataegus monogyna,Plant
+Turdus merula,Animal,eats,Taxus baccata,Plant
+Lycaena virgaureae,Animal,eats,Rumex acetosella,Plant
+Lycaena virgaureae,Animal,eats,Rumex acetosa,Plant
+Rumex acetosella,Plant,eatenBy,Lycaena virgaureae,Animal
+Rumex acetosa,Plant,eatenBy,Lycaena virgaureae,Animal
+Hyles gallii,Animal,eats,Galium spurium,Plant
+Galium aparine,Plant,eatenBy,Halidamia affinis,Animal
+Halidamia affinis,Animal,eats,Galium aparine,Plant
+Galium spurium,Plant,eatenBy,Hyles gallii,Animal
+Sturnus vulgaris,Animal,eats,Ilex aquifolium,Plant
+Ilex aquifolium,Plant,eatenBy,Sturnus vulgaris,Animal
+Sturnus vulgaris,Animal,eats,Ilex,Plant
+Ilex yunnanensis,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex,Plant,eatenBy,Sturnus vulgaris,Animal
+Erithacus rubecula,Animal,eats,Ilex integra,Plant
+Erithacus rubecula,Animal,eats,Ilex,Plant
+Ilex ciliospinosa,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex decidua,Plant
+Ilex dipyrena,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex crenata,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex maximowicziana,Plant
+Ilex serrata,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex cornuta,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex ciliospinosa,Plant
+Ilex maximowicziana,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex crenata,Plant
+Erithacus rubecula,Animal,eats,Ilex latifolia,Plant
+Ilex integra,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex,Plant
+Erithacus rubecula,Animal,eats,Ilex cornuta,Plant
+Erithacus rubecula,Animal,eats,Ilex pernyi,Plant
+Ilex,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex yunnanensis,Plant
+Ilex opaca,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex pernyi,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex,Plant
+Ilex,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex verticillata,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex opaca,Plant
+Ilex latifolia,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex,Plant
+Ilex,Plant,eatenBy,Erithacus rubecula,Animal
+Erithacus rubecula,Animal,eats,Ilex aquifolium,Plant
+Erithacus rubecula,Animal,eats,Ilex dipyrena,Plant
+Erithacus rubecula,Animal,eats,Ilex verticillata,Plant
+Erithacus rubecula,Animal,eats,Ilex serrata,Plant
+Ilex decidua,Plant,eatenBy,Erithacus rubecula,Animal
+Ilex aquifolium,Plant,eatenBy,Erithacus rubecula,Animal
+Araneus diadematus,Animal,eatenBy,Araneus diadematus,Animal
+Araneus diadematus,Animal,eats,Araneus diadematus,Animal
+Drosophila melanogaster,Animal,eatenBy,Araneus diadematus,Animal
+Araneus diadematus,Animal,eats,Drosophila melanogaster,Animal
+Araneus diadematus,Animal,eats,Aedes aegypti,Animal
+Aedes aegypti,Animal,eatenBy,Araneus diadematus,Animal
+Odonata,Animal,eatenBy,Garrulus glandarius,Animal
+Garrulus glandarius,Animal,eats,Odonata,Animal
+Cicada orni,Animal,eatenBy,Garrulus glandarius,Animal
+Quercus ilex,Plant,eatenBy,Garrulus glandarius,Animal
+Garrulus glandarius,Animal,eats,Quercus ilex,Plant
+Garrulus glandarius,Animal,eats,Cicada orni,Animal
+Cervus elaphus,Animal,eatenBy,Vulpes vulpes,Animal
+Lepus europaeus,Animal,eatenBy,Vulpes vulpes,Animal
+Soricidae,Animal,eatenBy,Vulpes vulpes,Animal
+Myodes glareolus,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Cervus elaphus,Animal
+Microtus oeconomus,Animal,eatenBy,Vulpes vulpes,Animal
+Sus scrofa,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Sciuridae,Animal
+Microtus,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Apodemus flavicollis,Animal
+Vulpes vulpes,Animal,eats,Microtus,Animal
+Sciuridae,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Capreolus capreolus,Animal
+Ovis aries,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Talpa europaea,Animal
+Vulpes vulpes,Animal,eats,Myodes glareolus,Animal
+Apodemus flavicollis,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Apodemus,Animal
+Capreolus capreolus,Animal,eatenBy,Vulpes vulpes,Animal
+Mustela nivalis,Animal,eatenBy,Vulpes vulpes,Animal
+Talpa europaea,Animal,eatenBy,Vulpes vulpes,Animal
+Apodemus,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Sus scrofa,Animal
+Vulpes vulpes,Animal,eats,Lepus europaeus,Animal
+Cervidae,Animal,eatenBy,Vulpes vulpes,Animal
+Vulpes vulpes,Animal,eats,Mustela nivalis,Animal
+Vulpes vulpes,Animal,eats,Soricidae,Animal
+Vulpes vulpes,Animal,eats,Microtus oeconomus,Animal
+Vulpes vulpes,Animal,eats,Ovis aries,Animal
+Vulpes vulpes,Animal,eats,Cervidae,Animal
